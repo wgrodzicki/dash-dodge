@@ -1,0 +1,43 @@
+name: "Dash Dodge"
+description: "Dodge enemies by dashing in combat.\nA gameplay mod by Rosynant."
+
+group_name: "Dash Dodge"
+
+isEnabled_name: "Is enabled?"
+isEnabled_desc: "Enable the mod."
+
+buffSpeedMultiplier_name: "Dash speed multiplier"
+buffSpeedMultiplier_desc: "The final speed buff when dashing will be multiplied by this value.\n\n(Range 0.1-2.0)
+    
+    \n\t0.1 -> Very slow dash.
+
+    \n\t1.0 -> Default.
+
+    \n\t2.0 -> Very fast dash."
+
+buffDurationMultiplier_name: "Dash duration multiplier"
+buffDurationMultiplier_desc: "The final speed buff duration when dashing will be multiplied by this value.\n\n(Range 0.1-2.0)
+    
+    \n\t0.1 -> Very short dash.
+
+    \n\t1.0 -> Default.
+
+    \n\t2.0 -> Very long dash."
+
+fatigueCostMultiplier_name: "Dash fatigue cost multiplier"
+fatigueCostMultiplier_desc: "The final fatigue cost of the dash will be multiplied by this value. Setting it to 0 will make the dash free.\n\n(Range 0.0-2.0)
+    
+    \n\t0.0 -> No fatigue cost.
+
+    \n\t1.0 -> Default cost (40 per dash).
+
+    \n\t2.0 -> Very high fatigue cost."
+
+sfxVolumeMultiplier_name: "Dash sound effect volume"
+sfxVolumeMultiplier_desc: "Setting it to 0 will mute the sound effect.\n\n(Range 0.0-2.0)
+
+    \n\t0.0 -> No sound effect.
+
+    \n\t1.0 -> Default volume (0.7).
+
+    \n\t2.0 -> Volume doubled."

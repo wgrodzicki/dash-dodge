@@ -1,0 +1,39 @@
+# **Dash Dodge**
+#### **v. 1.0**
+#### ***an OpenMW Lua mod by Rosynant***
+
+## Why this mod?
+
+It's no secret Morrowind's combat is not the main thing people love this game for. I thought it would be nice to implement some modern gameplay mechanics to spicy up the fights.
+
+## What does it do?
+
+In many games there is a dash/dodge action that allows you to move very fast in a fraction of a second to quickly change direction, shorten the distance or surprise the enemy. So this mod does exactly that.
+
+When in combat stance you can press a dedicated button to dash in the direction you're currently moving in. It consumes some amount of Fatigue and triggers a short cooldown so that you can't keep dashing forever.
+
+The dash ability depends on your Athletics, so the higher the skill, the longer and quicker your dodging will be. I added limit that caps the skill modifier at 100, so expect no exploits here.
+
+There is also a subtle sound effect that triggers when performing the dash. You can turn it off in the settings section if you like. You can also tweak modifiers related to the speed, duration and cost of the dodge, as well as bind a custom button to the action.
+
+## Requirements
+
+OpenMM 0.50, although will probably work on 0.48+ as well.
+
+## Installation
+
+Install like any other mod for OpenMW. Follow the official guide [here](https://openmw.readthedocs.io/en/latest/reference/modding/mod-install.html).
+
+## Compatibility
+
+Should be compatible with anything.
+
+## Credits
+
+[Solthas](https://www.nexusmods.com/profile/Solthas?gameId=100) for letting me use their code from the [Jump Air Dash (OpenMW Lua)](https://www.nexusmods.com/morrowind/mods/52287) mod as the starting point.
+
+[dash 2 sfxwav by perduuus](https://freesound.org/s/701844/) (License: [Attribution NonCommercial 4.0](https://creativecommons.org/licenses/by-nc/4.0/))
+
+## Permissions
+
+Do whatever you want. Just credit me, it's always nice.
