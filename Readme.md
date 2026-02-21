@@ -18,7 +18,7 @@ There is also a subtle sound effect that triggers when performing the dash. You 
 
 ## Requirements
 
-- OpenMW 0.50, although will probably work on 0.48+ as well.
+- [OpenMW 0.50](https://openmw.org/downloads/), although will probably work on 0.48+ as well.
 - Bloodmoon
 - Tribunal
 
@@ -32,6 +32,5 @@ Should be compatible with anything.
 
 ## Credits
 
-[Solthas](https://www.nexusmods.com/profile/Solthas?gameId=100) for letting me use their code from the [Jump Air Dash (OpenMW Lua)](https://www.nexusmods.com/morrowind/mods/52287) mod as the starting point.
-
-[dash 2 sfxwav by perduuus](https://freesound.org/s/701844/) (License: [Attribution NonCommercial 4.0](https://creativecommons.org/licenses/by-nc/4.0/), no changes made)
+- [Solthas](https://www.nexusmods.com/profile/Solthas?gameId=100) for letting me use their code from the [Jump Air Dash (OpenMW Lua)](https://www.nexusmods.com/morrowind/mods/52287) mod as the starting point.
+- [dash 2 sfxwav by perduuus](https://freesound.org/s/701844/) (License: [Attribution NonCommercial 4.0](https://creativecommons.org/licenses/by-nc/4.0/), no changes made)
