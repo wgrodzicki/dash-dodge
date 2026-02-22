@@ -18,7 +18,9 @@ When in combat stance you can press a dedicated button to dash in the direction 
 
 The dash ability depends on your Athletics, so the higher the skill, the longer and quicker your dodging will be. I added limit that caps the skill modifier at 100, so expect no exploits here.
 
-There is also a subtle sound effect that triggers when performing the dash. You can turn it off in the settings section if you like. You can also tweak modifiers related to the speed, duration and cost of the dodge, as well as bind a custom button to the action.
+Moreover, NPCs will dash in combat as well. The chance of performing the dodge depends on NPC level, so the higher the level (the "tougher" the opponent), the more likely they will be to dash.
+
+There is also a subtle sound effect that triggers when performing the dash. You can turn it off in the settings section if you like. Tweak modifiers related to the speed, duration and cost of the dodge, as well as NPC chance of dashing, to your liking. Don't forget to bind a custom button to the action.
 
 ## Requirements
 
