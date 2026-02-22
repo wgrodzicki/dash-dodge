@@ -1,2 +1,4 @@
-PLAYER: scripts/DashDodge/dash_dodge.lua
-PLAYER: scripts/DashDodge/dash_dodge_settings.lua
+GLOBAL: scripts/DashDodge/settings_global.lua
+PLAYER: scripts/DashDodge/settings_player.lua
+PLAYER: scripts/DashDodge/player.lua
+NPC: scripts/DashDodge/npc.lua

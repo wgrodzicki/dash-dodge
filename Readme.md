@@ -1,6 +1,10 @@
 # **Dash Dodge**
-#### **v. 1.0**
+#### **v. 1.1**
 #### ***an OpenMW Lua mod by Rosynant***
+
+Changelog
+- v. 1.1: added dashing ability to NPCs, code refactor, minor bug fixes
+- v. 1.0: initial release
 
 ## Why this mod?
 
