@@ -15,6 +15,8 @@ local isEnabled = true
 local buffSpeedMultiplier = 1.0
 local buffDurationMultiplier = 1.0
 local fatigueCostMultiplier = 1.0
+local cooldownDurationMultiplier = 1.0
+local enableEvasionEffect = true
 local sfxVolumeMultiplier = 1.0
 
 local baseSpeedBuffDuration = 0.0
@@ -31,6 +33,8 @@ local function getCurrentSettings()
     buffSpeedMultiplier = playerSettings:get('buffSpeedMultiplier_player')
     buffDurationMultiplier = playerSettings:get('buffDurationMultiplier_player')
     fatigueCostMultiplier = playerSettings:get('fatigueCostMultiplier_player')
+    cooldownDurationMultiplier = playerSettings:get('cooldownDurationMultiplier_player')
+    enableEvasionEffect = playerSettings:get('enableEvasionEffect_player')
     sfxVolumeMultiplier = playerSettings:get('sfxVolumeMultiplier_player')
 
     baseSpeedBuffDuration = common.DEFAULT_SPEED_BUFF_DURATION_PLAYER * buffDurationMultiplier
@@ -55,6 +59,10 @@ local function onLoad(data)
     totalSpeedBuffValue = data.totalSpeedBuffValue
     common.modifySpeed(totalSpeedBuffValue * -1, self)
     totalSpeedBuffValue = 0
+
+    if enableEvasionEffect then
+        types.Actor.spells(self):remove("Ros_dash_dodge_effect")
+    end
 end
 
 local function onUpdate()
@@ -69,6 +77,14 @@ local function onUpdate()
 
     -- No input
     if input.getBooleanActionValue("DashDodgeAction") == false then
+        return
+    end
+
+    -- Standing still
+    local currentSpeed = types.Actor.getCurrentSpeed(self)
+    local walk = types.Actor.getWalkSpeed(self)
+
+    if currentSpeed < walk then
         return
     end
 
@@ -99,6 +115,11 @@ local function onUpdate()
     common.modifySpeed(speedBuffValue, self)
     totalSpeedBuffValue = totalSpeedBuffValue + speedBuffValue
 
+    -- Add the evasion effect
+    if enableEvasionEffect then
+        types.Actor.spells(self):add("Ros_dash_dodge_effect")
+    end
+
     -- Play sfx
     if ambient and (sfxVolumeMultiplier > 0.0) then
         ambient.playSound("Ros_dash_dodge_sound", {
@@ -117,11 +138,15 @@ local function onUpdate()
         function()
             common.modifySpeed(totalSpeedBuffValue * -1, self)
             totalSpeedBuffValue = 0
+            
+            if enableEvasionEffect then
+                types.Actor.spells(self):remove("Ros_dash_dodge_effect")
+            end
         end
     )
 
     -- Calculate the cooldown depending on the skill
-    local cooldownDuration = common.DEFAULT_COOLDOWN_DURATION_PLAYER - (currentSkillValue / 100)
+    local cooldownDuration = (common.DEFAULT_COOLDOWN_DURATION_PLAYER - (currentSkillValue / 100)) * cooldownDurationMultiplier
 
     -- Make sure the cooldown is never less than the buff itself to prevent instant re-buff
     if cooldownDuration <= speedBuffDuration then

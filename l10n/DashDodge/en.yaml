@@ -6,7 +6,8 @@ isEnabled_desc: "Enable the mod."
 
 # PLAYER SETTINGS
 buffSpeedMultiplier_player_name: "Player dash speed multiplier"
-buffSpeedMultiplier_player_desc: "Player's final speed buff when dashing will be multiplied by this value.\n\n(Range 0.1-2.0)
+buffSpeedMultiplier_player_desc: "Player's speed buff when dashing depends on the Athletics skill.
+    The final value will be additionally multiplied by this number.\n\n(Range 0.1-2.0)
     
     \n\t0.1 -> Very slow dash.
 
@@ -15,7 +16,8 @@ buffSpeedMultiplier_player_desc: "Player's final speed buff when dashing will be
     \n\t2.0 -> Very fast dash."
 
 buffDurationMultiplier_player_name: "Player dash duration multiplier"
-buffDurationMultiplier_player_desc: "Player's final speed buff duration when dashing will be multiplied by this value.\n\n(Range 0.1-2.0)
+buffDurationMultiplier_player_desc: "Player's buff duration when dashing depends on the Athletics skill.
+    The final value will be additionally multiplied by this number.\n\n(Range 0.1-2.0)
     
     \n\t0.1 -> Very short dash.
 
@@ -24,13 +26,28 @@ buffDurationMultiplier_player_desc: "Player's final speed buff duration when das
     \n\t2.0 -> Very long dash."
 
 fatigueCostMultiplier_player_name: "Player dash fatigue cost multiplier"
-fatigueCostMultiplier_player_desc: "Player's final fatigue cost of the dash will be multiplied by this value. Setting it to 0 will make the dash free.\n\n(Range 0.0-2.0)
+fatigueCostMultiplier_player_desc: "Player's final fatigue cost of the dash will be multiplied by this number.
+    Setting it to 0 will make the dash free.\n\n(Range 0.0-2.0)
     
-    \n\t0.0 -> No fatigue cost.
+    \n\t0.0 -> No fatigue cost (dashing for free).
 
-    \n\t1.0 -> Default cost.
+    \n\t1.0 -> Default cost (40 Fatigue points).
 
     \n\t2.0 -> Very high fatigue cost."
+
+cooldownDurationMultiplier_player_name: "Player dash cooldown duration multiplier"
+cooldownDurationMultiplier_player_desc: "Player's cooldown duration after dashing depends on the Athletics skill.
+    The final value will be additionally multiplied by this number.\n\n(Range 0.5-1.5)
+    
+    \n\t0.5 -> Cooldown duration halved.
+
+    \n\t1.0 -> Default.
+
+    \n\t1.5 -> Cooldown duration increased by 50%."
+  
+enableEvasionEffect_player_name: "Enable player evasion effect?"
+enableEvasionEffect_player_desc: "If true, a 100% Sanctuary effect will be granted to the player,
+    providing immunity during the dash/dodge."
 
 sfxVolumeMultiplier_player_name: "Player dash sound effect volume"
 sfxVolumeMultiplier_player_desc: "Setting it to 0 will mute the sound effect.\n\n(Range 0.0-2.0)
@@ -42,17 +59,12 @@ sfxVolumeMultiplier_player_desc: "Setting it to 0 will mute the sound effect.\n\
     \n\t2.0 -> Volume doubled."
 
 # NPC SETTINGS
-dashChance_npc_name: "NPC dash chance"
-dashChance_npc_desc: "NPCs' chance to perform a dash (whenever they could perform it). Setting it to 0 will prevent NPCs from dashing at all.\n\n(Range 1-100)
-
-    \n\t0 -> No chance to dash.
-
-    \n\t10 -> Default chance to dash.
-
-    \n\t100 -> Very high chance to dash."
+enableDash_npc_name: "Enable NPC dashing?"
+enableDash_npc_desc: "Whether the NPCs will dash during combat."
 
 buffSpeedMultiplier_npc_name: "NPC dash speed multiplier"
-buffSpeedMultiplier_npc_desc: "NPCs' final speed buff when dashing will be multiplied by this value.\n\n(Range 0.1-2.0)
+buffSpeedMultiplier_npc_desc: "NPCs speed buff when dashing depends on their Athletics skill.
+    The final value will be additionally multiplied by this number.\n\n(Range 0.1-2.0)
     
     \n\t0.1 -> Very slow dash.
 
@@ -61,7 +73,8 @@ buffSpeedMultiplier_npc_desc: "NPCs' final speed buff when dashing will be multi
     \n\t2.0 -> Very fast dash."
 
 buffDurationMultiplier_npc_name: "NPC dash duration multiplier"
-buffDurationMultiplier_npc_desc: "NPCs' final speed buff duration when dashing will be multiplied by this value.\n\n(Range 0.1-2.0)
+buffDurationMultiplier_npc_desc: "NPCs buff duration when dashing depends on their Athletics skill.
+    The final value will be additionally multiplied by this number.\n\n(Range 0.1-2.0)
     
     \n\t0.1 -> Very short dash.
 
@@ -70,13 +83,28 @@ buffDurationMultiplier_npc_desc: "NPCs' final speed buff duration when dashing w
     \n\t2.0 -> Very long dash."
 
 fatigueCostMultiplier_npc_name: "NPC dash fatigue cost multiplier"
-fatigueCostMultiplier_npc_desc: "NPCs' final fatigue cost of the dash will be multiplied by this value. Setting it to 0 will make the dash free.\n\n(Range 0.0-2.0)
+fatigueCostMultiplier_npc_desc: "NPCs final fatigue cost of the dash will be multiplied by this number.
+    Setting it to 0 will make them dash for free, i.e. very frequently.\n\n(Range 0.0-2.0)
     
-    \n\t0.0 -> No fatigue cost.
+    \n\t0.0 -> No fatigue cost (dashing for free, very frequently).
 
-    \n\t1.0 -> Default cost.
+    \n\t1.0 -> Default cost (15 Fatigue points).
 
     \n\t2.0 -> Very high fatigue cost."
+  
+cooldownDurationMultiplier_npc_name: "NPC dash cooldown duration multiplier"
+cooldownDurationMultiplier_npc_desc: "NPCs cooldown duration after dashing depends on their Athletics skill.
+    The final value will be additionally multiplied by this number.\n\n(Range 0.5-1.5)
+    
+    \n\t0.5 -> Cooldown duration halved (dashing more frequently).
+
+    \n\t1.0 -> Default.
+
+    \n\t1.5 -> Cooldown duration increased by 50% (dashing less frequently)."
+
+enableEvasionEffect_npc_name: "Enable NPC evasion effect?"
+enableEvasionEffect_npc_desc: "If true, a 100% Sanctuary effect will be granted to the NPC,
+    providing immunity during the dash/dodge."
   
 sfxVolumeMultiplier_npc_name: "NPC dash sound effect volume"
 sfxVolumeMultiplier_npc_desc: "Setting it to 0 will mute the sound effect.\n\n(Range 0.0-2.0)

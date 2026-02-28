@@ -10,10 +10,12 @@ local npcSettings = storage.globalSection('Settings_DashDodge_NPC')
 
 -- From settings (user-adjustable)
 local isEnabled = true
-local chance = 10
+local enableDashNPC = true
 local buffSpeedMultiplier = 1.0
 local buffDurationMultiplier = 1.0
 local fatigueCostMultiplier = 1.0
+local cooldownDurationMultiplier = 1.0
+local enableEvasionEffect = true
 local sfxVolumeMultiplier = 1.0
 
 local baseSpeedBuffDuration = 0.0
@@ -27,10 +29,12 @@ local dynamic = types.Actor.stats.dynamic
 -- Get user settings
 local function getCurrentSettings()
     isEnabled = generalSettings:get('isEnabled')
-    chance = npcSettings:get('dashChance_npc')
+    enableDashNPC = npcSettings:get('enableDash_npc')
     buffSpeedMultiplier = npcSettings:get('buffSpeedMultiplier_npc')
     buffDurationMultiplier = npcSettings:get('buffDurationMultiplier_npc')
     fatigueCostMultiplier = npcSettings:get('fatigueCostMultiplier_npc')
+    cooldownDurationMultiplier = npcSettings:get('cooldownDurationMultiplier_npc')
+    enableEvasionEffect = npcSettings:get('enableEvasionEffect_npc')
     sfxVolumeMultiplier = npcSettings:get('sfxVolumeMultiplier_npc')
 
     baseSpeedBuffDuration = common.DEFAULT_SPEED_BUFF_DURATION_NPC * buffDurationMultiplier
@@ -47,11 +51,15 @@ local function onUpdate()
         return
     end
 
+    if enableDashNPC == false then
+        return
+    end
+
     if common.checkCanDash(self, canApplySpeedBuff) == false then
         return
     end
 
-    -- Is walking (not running)
+    -- Not running
     local currentSpeed = types.Actor.getCurrentSpeed(self)
     local walk = types.Actor.getWalkSpeed(self)
     local run = types.Actor.getRunSpeed(self)
@@ -83,7 +91,7 @@ local function onUpdate()
         randomRoll = 0
     end
 
-    if randomRoll >= chance then
+    if randomRoll >= common.NPC_DASH_CHANCE then
         return
     end
 
@@ -105,6 +113,11 @@ local function onUpdate()
     common.modifySpeed(speedBuffValue, self)
     totalSpeedBuffValue = totalSpeedBuffValue + speedBuffValue
 
+    -- Add the evasion effect
+    if enableEvasionEffect then
+        types.Actor.spells(self):add("Ros_dash_dodge_effect")
+    end
+
     -- Play sfx
     if sfxVolumeMultiplier > 0.0 then
         core.sound.playSound3d("Ros_dash_dodge_sound", self, {
@@ -123,11 +136,24 @@ local function onUpdate()
         function()
             common.modifySpeed(totalSpeedBuffValue * -1, self)
             totalSpeedBuffValue = 0
+
+            if enableEvasionEffect then
+                types.Actor.spells(self):remove("Ros_dash_dodge_effect")
+            end
         end
     )
 
     -- Calculate the cooldown depending on the skill
-    local cooldownDuration = common.DEFAULT_COOLDOWN_DURATION_NPC - (currentSkillValue / 100)
+    local cooldownDuration = (common.DEFAULT_COOLDOWN_DURATION_NPC - (currentSkillValue / 100)) * cooldownDurationMultiplier
+
+    -- Randomize cooldown, but clamp the random roll first
+    if randomRoll < common.LOWER_COOLDOWN_THRESHOLD_NPC then
+        randomRoll = common.LOWER_COOLDOWN_THRESHOLD_NPC
+    elseif randomRoll > common.UPPER_COOLDOWN_THRESHOLD_NPC then
+        randomRoll = common.UPPER_COOLDOWN_THRESHOLD_NPC
+    end
+
+    cooldownDuration = cooldownDuration * randomRoll
 
     -- Make sure the cooldown is never less than the buff itself to prevent instant re-buff
     if cooldownDuration <= speedBuffDuration then
