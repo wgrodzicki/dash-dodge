@@ -46,16 +46,12 @@ local function checkCanDash(actor, canApplySpeedBuff)
     return true
 end
 
--- Applies a speed modifier. Positive values are buffs, negative values are debuffs.
+-- Modifies actor's speed by changing the base value.
+-- Changed from applying a modifier/damage to the attribute, since it was causing a bug,
+-- where the attribute would be permanently treated as modified by the game and thus mess up with any restoring effects.
 local function modifySpeed(modifierValue, actor)
-    if modifierValue > 0 then -- If positive effect, then modifier; else damage
-        types.Actor.stats.attributes.speed(actor).modifier
-            = math.max(0, types.Actor.stats.attributes.speed(actor).modifier + modifierValue)
-    else
-        modifierValue = math.abs(modifierValue)
-        types.Actor.stats.attributes.speed(actor).damage
-            = math.max(0, types.Actor.stats.attributes.speed(actor).damage + modifierValue)
-    end
+    types.Actor.stats.attributes.speed(actor).base
+        = math.max(0, types.Actor.stats.attributes.speed(actor).base + modifierValue)
 end
 
 return {
