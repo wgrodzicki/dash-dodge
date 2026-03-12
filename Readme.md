@@ -3,6 +3,7 @@
 #### ***an OpenMW Lua mod by Rosynant***
 
 Changelog
+- v. 1.3: fixed a bug caused by incorrect mode of applying the speed modifier debuff
 - v. 1.2: added an optional evasion effect when dashing (100% Sanctuary), more random NPC cooldown, more parameters exposed in the settings, disabled dashing when standing still
 - v. 1.1: added dashing ability to NPCs, code refactor, minor bug fixes
 - v. 1.0: initial release
