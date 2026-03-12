@@ -1,5 +1,5 @@
 # **Dash Dodge**
-#### **v. 1.2**
+#### **v. 1.3**
 #### ***an OpenMW Lua mod by Rosynant***
 
 Changelog
